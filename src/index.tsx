@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import MainScreen from './pages/main-screen/main-screen';
+import App from './components/app/app.tsx';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -8,7 +8,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <h1>Hello, World!</h1>
-    <MainScreen/>
+    <App offersCount={5}/>
   </React.StrictMode>
 );
