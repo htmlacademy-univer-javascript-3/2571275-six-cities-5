@@ -6,6 +6,8 @@ import FavoritesScreen from '../../pages/favorites-screen/favorites-screen.tsx';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen.tsx';
 import LoginScreen from '../../pages/login-screen/login-screen.tsx';
 import OfferScreen from '../../pages/offer-screen/offer-screen.tsx';
+import PrivateRoute from '../private-route/private-route.tsx';
+import {AuthorizationStatus} from '../private-route/authorization-status.ts';
 
 type AppProps = {
   offersCount: number;
@@ -35,7 +37,11 @@ function App({offersCount} : AppProps): JSX.Element {
         />
         <Route
           path={AppRoutes.Favorites}
-          element={<FavoritesScreen />}
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <FavoritesScreen />
+            </PrivateRoute>
+          }
         />
         <Route
           path={AppRoutes.Login}
