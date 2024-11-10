@@ -1,5 +1,5 @@
-﻿import OfferCard from './components/offer-card.tsx';
-import Offer from '../../models/offer.ts';
+﻿import Offer from '../../models/offer.ts';
+import OffersList from './components/offers-list.tsx';
 
 type MainScreenProps = {
   offers: Offer[];
@@ -95,24 +95,7 @@ function MainScreen({offers}: MainScreenProps) : JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {
-                  offers.map(
-                    (offer) => (
-                      <OfferCard
-                        key={offer.id}
-                        isPremium={offer.isPremium}
-                        isFavorite={offer.isFavorite}
-                        previewImage={offer.previewImage}
-                        price={offer.price}
-                        rating={offer.rating}
-                        title={offer.title}
-                        type={offer.type}
-                      />
-                    )
-                  )
-                }
-              </div>
+              <OffersList offers={offers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>

@@ -1,18 +1,21 @@
 ﻿import OfferCardBookmark from './offer-card-bookmark.tsx';
+import Offer from '../../../models/offer.ts';
 
 type OfferCardProps = {
-  isPremium: boolean;
-  isFavorite: boolean;
-  previewImage: string;
-  type: string;
-  title: string;
-  price: number;
-  rating: number;
+  offer: Offer;
+  onMouseOver: () => void;
+  onMouseOut: () => void;
 }
 
-function OfferCard({isFavorite, isPremium, previewImage, type, title, price, rating}: OfferCardProps): JSX.Element {
+function OfferCard({offer, onMouseOver, onMouseOut}: OfferCardProps): JSX.Element {
+  const {isFavorite, isPremium, previewImage, type, title, price, rating} = offer;
+
   return (
-    <article className="cities__card place-card">
+    <article
+      className="cities__card place-card"
+      onMouseOver={onMouseOver}
+      onMouseLeave={onMouseOut}
+    >
       {isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
