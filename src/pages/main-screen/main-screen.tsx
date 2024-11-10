@@ -1,4 +1,4 @@
-﻿import PlaceCard from '../../components/place-card/place-card.tsx';
+﻿import PlaceCard from './components/place-card.tsx';
 import Offer from '../../models/offer.ts';
 
 type MainScreenProps = {
