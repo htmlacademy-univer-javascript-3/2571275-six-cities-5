@@ -1,8 +1,8 @@
-﻿type PlaceCardBookmarkProps = {
+﻿type OfferCardBookmarkProps = {
   isFavorite: boolean;
 }
 
-function PlaceCardBookmark({isFavorite}: PlaceCardBookmarkProps): JSX.Element {
+function OfferCardBookmark({isFavorite}: OfferCardBookmarkProps): JSX.Element {
   return (
     <button className={`place-card__bookmark-button ${isFavorite && 'place-card__bookmark-button--active'} button`} type="button">
       <svg className="place-card__bookmark-icon" width="18" height="19">
@@ -13,4 +13,4 @@ function PlaceCardBookmark({isFavorite}: PlaceCardBookmarkProps): JSX.Element {
   );
 }
 
-export default PlaceCardBookmark;
+export default OfferCardBookmark;

@@ -1,6 +1,6 @@
-﻿import PlaceCardBookmark from './place-card-bookmark.tsx';
+﻿import OfferCardBookmark from './offer-card-bookmark.tsx';
 
-type PlaceCardProps = {
+type OfferCardProps = {
   isPremium: boolean;
   isFavorite: boolean;
   previewImage: string;
@@ -10,7 +10,7 @@ type PlaceCardProps = {
   rating: number;
 }
 
-function PlaceCard({isFavorite, isPremium, previewImage, type, title, price, rating}: PlaceCardProps): JSX.Element {
+function OfferCard({isFavorite, isPremium, previewImage, type, title, price, rating}: OfferCardProps): JSX.Element {
   return (
     <article className="cities__card place-card">
       {isPremium &&
@@ -28,7 +28,7 @@ function PlaceCard({isFavorite, isPremium, previewImage, type, title, price, rat
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <PlaceCardBookmark isFavorite={isFavorite} />
+          <OfferCardBookmark isFavorite={isFavorite} />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -45,4 +45,4 @@ function PlaceCard({isFavorite, isPremium, previewImage, type, title, price, rat
   );
 }
 
-export default PlaceCard;
+export default OfferCard;

@@ -1,4 +1,4 @@
-﻿import PlaceCard from './components/place-card.tsx';
+﻿import OfferCard from './components/offer-card.tsx';
 import Offer from '../../models/offer.ts';
 
 type MainScreenProps = {
@@ -99,7 +99,7 @@ function MainScreen({offers}: MainScreenProps) : JSX.Element {
                 {
                   offers.map(
                     (offer) => (
-                      <PlaceCard
+                      <OfferCard
                         key={offer.id}
                         isPremium={offer.isPremium}
                         isFavorite={offer.isFavorite}
