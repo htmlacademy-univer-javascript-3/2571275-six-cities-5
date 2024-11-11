@@ -11,9 +11,10 @@ import {AuthorizationStatus} from '../private-route/authorization-status.ts';
 
 type AppProps = {
   offers: Offer[];
+  favourites: Offer[];
 }
 
-function App({offers} : AppProps): JSX.Element {
+function App({offers, favourites} : AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -24,8 +25,8 @@ function App({offers} : AppProps): JSX.Element {
         <Route
           path={AppRoutes.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <FavoritesScreen />
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <FavoritesScreen offers={favourites} />
             </PrivateRoute>
           }
         />
