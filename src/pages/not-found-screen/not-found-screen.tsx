@@ -1,4 +1,5 @@
 ﻿import {Link} from 'react-router-dom';
+import {AppRoutes} from '../../components/app/AppRoutes.ts';
 
 function NotFoundScreen() : JSX.Element {
   return (
@@ -8,7 +9,7 @@ function NotFoundScreen() : JSX.Element {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <a className="header__logo-link" href="main.html">
+                <Link to={AppRoutes.Root} className="header__logo-link">
                   <img
                     className="header__logo"
                     src="img/logo.svg"
@@ -16,7 +17,7 @@ function NotFoundScreen() : JSX.Element {
                     width={81}
                     height={41}
                   />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
