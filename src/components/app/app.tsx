@@ -13,10 +13,11 @@ import ReviewData from '../../models/review-data.ts';
 type AppProps = {
   offers: Offer[];
   favourites: Offer[];
+  nearbyOffers: Offer[];
   reviews: ReviewData[];
 }
 
-function App({ offers, favourites, reviews } : AppProps): JSX.Element {
+function App({ offers, favourites, nearbyOffers, reviews } : AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -38,7 +39,7 @@ function App({ offers, favourites, reviews } : AppProps): JSX.Element {
         />
         <Route
           path={AppRoutes.Offer}
-          element={<OfferScreen reviews={reviews} />}
+          element={<OfferScreen reviews={reviews} nearbyOffers={nearbyOffers}/>}
         />
         <Route
           path="*"
