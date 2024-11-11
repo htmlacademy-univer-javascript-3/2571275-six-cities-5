@@ -1,4 +1,4 @@
-﻿import OfferCard from './offer-card.tsx';
+﻿import OfferCard from '../../../components/offer-card/offer-card.tsx';
 import Offer from '../../../models/offer.ts';
 import { Link } from 'react-router-dom';
 import {AppRoutes} from '../../../components/app/AppRoutes.ts';

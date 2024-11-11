@@ -1,10 +1,10 @@
-﻿import Offer from '../../../models/offer.ts';
+﻿import Offer from '../../models/offer.ts';
 import React from 'react';
 
 type OfferCardProps = {
   offer: Offer;
-  onMouseOver: () => void;
-  onMouseOut: () => void;
+  onMouseOver?: () => void;
+  onMouseOut?: () => void;
 };
 
 function OfferCard({ offer, onMouseOver, onMouseOut }: OfferCardProps): JSX.Element {

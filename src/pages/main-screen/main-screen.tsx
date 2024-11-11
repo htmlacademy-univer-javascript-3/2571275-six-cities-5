@@ -71,7 +71,7 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
               <section className="cities__map map">
                 {cityOffers.length > 0 ? (
                   <Map
-                    city={cityOffers[0].city}
+                    mainLocation={cityOffers[0].city.location}
                     offers={cityOffers}
                     selectedOffer={selectedOffer}
                   />

@@ -2,12 +2,20 @@
 import Header from '../../components/header/header.tsx';
 import ReviewList from './components/review-list.tsx';
 import ReviewForm from './components/review-form.tsx';
+import Map from '../../components/map/map.tsx';
+import Offer from '../../models/offer.ts';
+import NearbyOffersList from './components/nearby-offers-list.tsx';
+import {useParams} from 'react-router-dom'; // Импортируем новый компонент
 
 type OfferScreenProps = {
   reviews: ReviewData[];
+  nearbyOffers: Offer[];
 };
 
-function OfferScreen({ reviews }: OfferScreenProps): JSX.Element {
+function OfferScreen({ reviews, nearbyOffers }: OfferScreenProps): JSX.Element {
+  const params = useParams();
+  const currentOffer = nearbyOffers.find((offer) => offer.id === params.id) || nearbyOffers[0];
+
   return (
     <div className="page">
       <Header />
@@ -38,13 +46,15 @@ function OfferScreen({ reviews }: OfferScreenProps): JSX.Element {
 
           <div className="offer__container container">
             <div className="offer__wrapper">
-              <div className="offer__mark">
-                <span>Premium</span>
-              </div>
+              {currentOffer.isPremium && (
+                <div className="offer__mark">
+                  <span>Premium</span>
+                </div>
+              )}
               <div className="offer__name-wrapper">
-                <h1 className="offer__name">Beautiful &amp; luxurious studio at great location</h1>
+                <h1 className="offer__name">{currentOffer.title}</h1>
                 <button className="offer__bookmark-button button" type="button">
-                  <svg className="offer__bookmark-icon" width={31} height={33}>
+                  <svg className="offer__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
@@ -53,10 +63,10 @@ function OfferScreen({ reviews }: OfferScreenProps): JSX.Element {
 
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{ width: '80%' }}></span>
+                  <span style={{ width: `${currentOffer.rating * 20}%` }}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="offer__rating-value rating__value">4.8</span>
+                <span className="offer__rating-value rating__value">{currentOffer.rating}</span>
               </div>
 
               <ul className="offer__features">
@@ -66,7 +76,7 @@ function OfferScreen({ reviews }: OfferScreenProps): JSX.Element {
               </ul>
 
               <div className="offer__price">
-                <b className="offer__price-value">€120</b>
+                <b className="offer__price-value">€{currentOffer.price}</b>
                 <span className="offer__price-text">/night</span>
               </div>
 
@@ -118,8 +128,19 @@ function OfferScreen({ reviews }: OfferScreenProps): JSX.Element {
             </div>
           </div>
 
-          <section className="offer__map map"></section>
+          <section className="offer__map map">
+            <Map mainLocation={currentOffer.location} offers={nearbyOffers} selectedOffer={currentOffer} />
+          </section>
         </section>
+
+        <div className="container">
+          <section className="near-places places">
+            <h2 className="near-places__title">Other places in the neighbourhood</h2>
+            <NearbyOffersList
+              nearbyOffers={nearbyOffers.filter((offer) => offer.id !== currentOffer.id)}
+            />
+          </section>
+        </div>
       </main>
     </div>
   );
