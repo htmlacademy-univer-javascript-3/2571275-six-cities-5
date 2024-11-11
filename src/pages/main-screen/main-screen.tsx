@@ -1,12 +1,19 @@
 ﻿import Offer from '../../models/offer.ts';
 import OffersList from './components/offers-list.tsx';
 import Header from '../../components/header/header.tsx';
+import Map from '../../components/map/map.tsx';
+import { useState } from 'react';
+import { CITY_NAMES } from '../../const.ts';
 
 type MainScreenProps = {
   offers: Offer[];
 };
 
 function MainScreen({ offers }: MainScreenProps): JSX.Element {
+  const [currentCityName, setCurrentCityName] = useState('Paris');
+  const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
+  const cityOffers = offers.filter((offer) => offer.city.name === currentCityName);
+
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -15,45 +22,27 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <div className="locations__item-link tabs__item">
-                  <span>Paris</span>
-                </div>
-              </li>
-              <li className="locations__item">
-                <div className="locations__item-link tabs__item">
-                  <span>Cologne</span>
-                </div>
-              </li>
-              <li className="locations__item">
-                <div className="locations__item-link tabs__item">
-                  <span>Brussels</span>
-                </div>
-              </li>
-              <li className="locations__item">
-                <div className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </div>
-              </li>
-              <li className="locations__item">
-                <div className="locations__item-link tabs__item">
-                  <span>Hamburg</span>
-                </div>
-              </li>
-              <li className="locations__item">
-                <div className="locations__item-link tabs__item">
-                  <span>Dusseldorf</span>
-                </div>
-              </li>
+              {CITY_NAMES.map((city) => (
+                <li className="locations__item" key={city}>
+                  <div
+                    className={`locations__item-link tabs__item ${city === currentCityName ? 'tabs__item--active' : ''}`}
+                    onClick={() => setCurrentCityName(city)}
+                  >
+                    <span>{city}</span>
+                  </div>
+                </li>
+              ))}
             </ul>
           </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
-            {offers.length > 0 ? (
+            {cityOffers.length > 0 ? (
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+                <b className="places__found">
+                  {cityOffers.length} places to stay in {currentCityName}
+                </b>
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex={0}>
@@ -69,7 +58,7 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
                     <li className="places__option" tabIndex={0}>Top rated first</li>
                   </ul>
                 </form>
-                <OffersList offers={offers} />
+                <OffersList offers={cityOffers} onOfferHover={setSelectedOffer} />
               </section>
             ) : (
               <section className="cities__places places">
@@ -78,13 +67,18 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
               </section>
             )}
             <div className="cities__right-section">
-              {offers.length > 0 ? (
-                <section className="cities__map map"></section>
-              ) : (
-                <div className="cities__no-map">
-                  <img src="img/map.jpg" alt="No map available" />
-                </div>
-              )}
+
+              <section className="cities__map map">
+                {cityOffers.length > 0 ? (
+                  <Map
+                    city={cityOffers[0].city}
+                    offers={cityOffers}
+                    selectedOffer={selectedOffer}
+                  />
+                ) : (
+                  <img src="img/map.jpg" alt="No map available"/>
+                )}
+              </section>
             </div>
           </div>
         </div>
