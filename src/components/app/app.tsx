@@ -8,26 +8,15 @@ import LoginScreen from '../../pages/login-screen/login-screen.tsx';
 import OfferScreen from '../../pages/offer-screen/offer-screen.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
 import {AuthorizationStatus} from '../private-route/authorization-status.ts';
+import ReviewData from '../../models/review-data.ts';
 
 type AppProps = {
-  offersCount: number;
+  offers: Offer[];
+  favourites: Offer[];
+  reviews: ReviewData[];
 }
 
-const someOffer : Offer = {
-  id: '6af6f711-c28d-4121-82cd-e0b462a27f00',
-  title: 'Beautiful & luxurious studio at great location',
-  type: 'apartment',
-  price: 120,
-  isFavorite: true,
-  isPremium: true,
-  rating: 4,
-  previewImage: 'img/apartment-03.jpg'
-};
-
-
-function App({offersCount} : AppProps): JSX.Element {
-  const offers = new Array(offersCount).fill(someOffer);
-
+function App({ offers, favourites, reviews } : AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -38,8 +27,8 @@ function App({offersCount} : AppProps): JSX.Element {
         <Route
           path={AppRoutes.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <FavoritesScreen />
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <FavoritesScreen offers={favourites} />
             </PrivateRoute>
           }
         />
@@ -49,7 +38,7 @@ function App({offersCount} : AppProps): JSX.Element {
         />
         <Route
           path={AppRoutes.Offer}
-          element={<OfferScreen />}
+          element={<OfferScreen reviews={reviews} />}
         />
         <Route
           path="*"

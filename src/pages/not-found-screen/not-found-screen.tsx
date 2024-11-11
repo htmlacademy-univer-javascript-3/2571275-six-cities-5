@@ -1,15 +1,15 @@
 ﻿import {Link} from 'react-router-dom';
-import {Fragment} from 'react';
+import {AppRoutes} from '../../components/app/AppRoutes.ts';
 
 function NotFoundScreen() : JSX.Element {
   return (
-    <Fragment>
+    <>
       <div className="page page--gray">
         <header className="header">
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <a className="header__logo-link" href="main.html">
+                <Link to={AppRoutes.Root} className="header__logo-link">
                   <img
                     className="header__logo"
                     src="img/logo.svg"
@@ -17,7 +17,7 @@ function NotFoundScreen() : JSX.Element {
                     width={81}
                     height={41}
                   />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -25,34 +25,17 @@ function NotFoundScreen() : JSX.Element {
       </div>
       <main className="page__main">
         <img src="markup/img/not-found.jpg" alt='404'/>
-        <div
-          className="container not-found--container"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            textAlign: 'center',
-            color: 'white',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            padding: '50px',
-            borderRadius: '10px'
-          }}
-        >
+        <div className="container not-found--container">
           <h1>
-            404.
-            <br/>
+            404.<br/>
             <small>Page not found :(</small>
           </h1>
-          <Link to="/" className="header__nav-link" style={{color: 'white', textDecoration: 'underline'}}>
+          <Link to="/" className="not-found--nav">
             Go to main page
           </Link>
         </div>
       </main>
-    </Fragment>
+    </>
   );
 }
 
