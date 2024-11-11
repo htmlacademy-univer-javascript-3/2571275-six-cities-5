@@ -12,13 +12,13 @@ const offersMock : Offer[] = [
       location: {
         latitude: 53.548500,
         longitude: 9.987558,
-        zoom: 8
+        zoom: 10
       }
     },
     location: {
       latitude: 53.547992,
       longitude: 10.001891,
-      zoom: 8
+      zoom: 10
     },
     isFavorite: true,
     isPremium: true,
@@ -35,14 +35,14 @@ const offersMock : Offer[] = [
       name: 'Amsterdam',
       location: {
         latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        longitude: 4.873877537499948,
+        zoom: 10
       }
     },
     location: {
       latitude: 52.3909553943508,
       longitude: 4.85309666406198,
-      zoom: 8
+      zoom: 10
     },
     isFavorite: true,
     isPremium: false,
@@ -59,14 +59,14 @@ const offersMock : Offer[] = [
       name: 'Amsterdam',
       location: {
         latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        longitude: 4.873877537499948,
+        zoom: 10
       }
     },
     location: {
       latitude: 52.3609553943508,
       longitude: 4.85309666406198,
-      zoom: 8
+      zoom: 10
     },
     isFavorite: false,
     isPremium: false,
@@ -83,20 +83,44 @@ const offersMock : Offer[] = [
       name: 'Amsterdam',
       location: {
         latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        longitude: 4.873877537499948,
+        zoom: 10
       }
     },
     location: {
       latitude: 52.3909553943508,
       longitude: 4.929309666406198,
-      zoom: 8
+      zoom: 10
     },
     isFavorite: false,
     isPremium: false,
     rating: 4,
     previewImage: 'img/apartment-01.jpg'
   },
+
+  {
+    id: '0b5c5259-9f54-49b6-9d32-2d4b7eae4324',
+    title: 'Clear room',
+    type: AccommodationType.Room,
+    price: 100,
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.35514938496378,
+        longitude: 4.873877537499948,
+        zoom: 10
+      }
+    },
+    location: {
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 10
+    },
+    isFavorite: true,
+    isPremium: false,
+    rating: 4,
+    previewImage: 'img/apartment-03.jpg'
+  }
 ];
 
 export default offersMock;
