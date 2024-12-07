@@ -1,14 +1,13 @@
 ﻿import MainScreen from '../../pages/main-screen/main-screen.tsx';
 import Offer from '../../models/offer.ts';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {AppRoutes} from './AppRoutes.ts';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen.tsx';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen.tsx';
 import LoginScreen from '../../pages/login-screen/login-screen.tsx';
 import OfferScreen from '../../pages/offer-screen/offer-screen.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
-import {AuthorizationStatus} from '../private-route/authorization-status.ts';
 import ReviewData from '../../models/review-data.ts';
+import {AppRoute, AuthorizationStatus} from '../../const.ts';
 
 type AppProps = {
   offers: Offer[];
@@ -22,11 +21,11 @@ function App({ offers, favourites, nearbyOffers, reviews } : AppProps): JSX.Elem
     <BrowserRouter>
       <Routes>
         <Route
-          path={AppRoutes.Root}
+          path={AppRoute.Root}
           element={<MainScreen offers={offers} />}
         />
         <Route
-          path={AppRoutes.Favorites}
+          path={AppRoute.Favorites}
           element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
               <FavoritesScreen offers={favourites} />
@@ -34,11 +33,11 @@ function App({ offers, favourites, nearbyOffers, reviews } : AppProps): JSX.Elem
           }
         />
         <Route
-          path={AppRoutes.Login}
+          path={AppRoute.Login}
           element={<LoginScreen />}
         />
         <Route
-          path={AppRoutes.Offer}
+          path={AppRoute.Offer}
           element={<OfferScreen reviews={reviews} nearbyOffers={nearbyOffers}/>}
         />
         <Route

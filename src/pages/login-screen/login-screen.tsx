@@ -1,5 +1,5 @@
-﻿import {AppRoutes} from '../../components/app/AppRoutes.ts';
-import {Link} from 'react-router-dom';
+﻿import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const.ts';
 
 function LoginScreen() : JSX.Element {
   return (
@@ -8,7 +8,7 @@ function LoginScreen() : JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Link to={AppRoutes.Root} className="header__logo-link">
+              <Link to={AppRoute.Root} className="header__logo-link">
                 <img
                   className="header__logo"
                   src="img/logo.svg"

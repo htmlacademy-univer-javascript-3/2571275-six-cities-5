@@ -5,7 +5,7 @@ import ReviewForm from './components/review-form.tsx';
 import Map from '../../components/map/map.tsx';
 import Offer from '../../models/offer.ts';
 import NearbyOffersList from './components/nearby-offers-list.tsx';
-import {useParams} from 'react-router-dom'; // Импортируем новый компонент
+import {useParams} from 'react-router-dom';
 
 type OfferScreenProps = {
   reviews: ReviewData[];

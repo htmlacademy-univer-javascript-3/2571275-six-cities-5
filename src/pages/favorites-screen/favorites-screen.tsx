@@ -1,8 +1,8 @@
 ﻿import Offer from '../../models/offer.ts';
 import FavoritesList from './components/favorites-list.tsx';
 import Header from '../../components/header/header.tsx';
-import {AppRoutes} from '../../components/app/AppRoutes.ts';
 import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const.ts';
 
 type FavoritesScreenProps = {
   offers: Offer[];
@@ -24,7 +24,7 @@ function FavoritesScreen({ offers }: FavoritesScreenProps): JSX.Element {
         </div>
       </main>
       <footer className="footer container">
-        <Link to={AppRoutes.Root} className="footer__logo-link">
+        <Link to={AppRoute.Root} className="footer__logo-link">
           <img
             className="footer__logo"
             src="img/logo.svg"
