@@ -4,6 +4,7 @@ import Header from '../../components/header/header.tsx';
 import Map from '../../components/map/map.tsx';
 import { useState } from 'react';
 import {CityName} from '../../const.ts';
+import CitiesList from './components/cities-list.tsx';
 
 
 function MainScreen(): JSX.Element {
@@ -16,22 +17,10 @@ function MainScreen(): JSX.Element {
       <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              {Object.values(CityName).map((city) => (
-                <li className="locations__item" key={city}>
-                  <div
-                    className={`locations__item-link tabs__item ${city === currentCityName ? 'tabs__item--active' : ''}`}
-                    onClick={() => setCurrentCityName(city)}
-                  >
-                    <span>{city}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+        <CitiesList
+          current={currentCityName}
+          onChange={setCurrentCityName}
+        />
         <div className="cities">
           <div className="cities__places-container container">
             {cityOffers.length > 0 ? (
