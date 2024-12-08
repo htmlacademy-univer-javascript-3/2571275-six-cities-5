@@ -1,14 +1,13 @@
-﻿import Offer from '../../models/offer.ts';
-import FavoritesList from './components/favorites-list.tsx';
+﻿import FavoritesList from './components/favorites-list.tsx';
 import Header from '../../components/header/header.tsx';
-import {AppRoutes} from '../../components/app/AppRoutes.ts';
 import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const.ts';
+import {useAppSelector} from '../../hooks/use-app-selector.ts';
 
-type FavoritesScreenProps = {
-  offers: Offer[];
-};
+function FavoritesScreen(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers)
+    .filter((offer) => offer.isFavorite);
 
-function FavoritesScreen({ offers }: FavoritesScreenProps): JSX.Element {
   return (
     <div className="page">
       <Header />
@@ -24,7 +23,7 @@ function FavoritesScreen({ offers }: FavoritesScreenProps): JSX.Element {
         </div>
       </main>
       <footer className="footer container">
-        <Link to={AppRoutes.Root} className="footer__logo-link">
+        <Link to={AppRoute.Root} className="footer__logo-link">
           <img
             className="footer__logo"
             src="img/logo.svg"

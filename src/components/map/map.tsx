@@ -2,7 +2,6 @@
 import {Icon, Marker, layerGroup} from 'leaflet';
 import useMap from '../../hooks/use-map';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
-import 'leaflet/dist/leaflet.css';
 import Location from '../../models/location.ts';
 import Offer from '../../models/offer.ts';
 
@@ -52,7 +51,7 @@ function Map({mainLocation, offers, selectedOffer}: MapProps): JSX.Element {
     }
   }, [map, offers, selectedOffer]);
 
-  return <div style={{height: '500px'}} ref={mapRef}></div>;
+  return <div style={{height: '100%'}} ref={mapRef}></div>;
 }
 
 export default Map;

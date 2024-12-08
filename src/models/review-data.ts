@@ -1,6 +1,6 @@
-﻿type ReviewData = {
+﻿export type ReviewData = {
   id: string;
-  date: string;
+  date: Date;
   user: {
     name: string;
     avatarUrl: string;
@@ -10,4 +10,5 @@
   rating: number;
 }
 
-export default ReviewData;
+export type NewReviewData = Pick<ReviewData, 'comment' | 'rating'>
+

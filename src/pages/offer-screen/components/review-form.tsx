@@ -1,18 +1,21 @@
-﻿import React, { useState } from 'react';
+﻿import React, {ChangeEvent, useState} from 'react';
 import {ratingsData} from '../rating-data.ts';
+import {NewReviewData, ReviewData} from '../../../models/review-data.ts';
+import reviewsMock from '../../../mocks/reviews-mock.ts';
 
-type ReviewFormData = {
-  rating: number;
-  review: string;
+type OfferScreenProps = {
+  onSubmit: (newReview: ReviewData) => void;
 };
 
-function ReviewForm(): JSX.Element {
-  const [formState, setFormState] = useState<ReviewFormData>({
+function ReviewForm({ onSubmit } : OfferScreenProps): JSX.Element {
+  const initialFormState = {
     rating: 0,
-    review: '',
-  });
+    comment: '',
+  };
 
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const [formState, setFormState] = useState<NewReviewData>(initialFormState);
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setFormState((prev) => ({
@@ -21,8 +24,27 @@ function ReviewForm(): JSX.Element {
     }));
   };
 
+  const handleFormSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const review : ReviewData = {
+      id : crypto.randomUUID(),
+      date: new Date(),
+      user: reviewsMock[0].user,
+      comment: formState.comment,
+      rating: formState.rating
+    };
+
+    onSubmit(review);
+
+    setFormState(initialFormState);
+  };
+
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form
+      className="reviews__form form"
+      onSubmit={handleFormSubmit}
+    >
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
@@ -53,10 +75,10 @@ function ReviewForm(): JSX.Element {
 
       <textarea
         className="reviews__textarea form__textarea"
-        id="review"
-        name="review"
+        id="comment"
+        name="comment"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        value={formState.review}
+        value={formState.comment}
         onChange={handleChange}
       />
       <div className="reviews__button-wrapper">
@@ -67,8 +89,7 @@ function ReviewForm(): JSX.Element {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          onSubmit={(evt) => evt.preventDefault()}
-          disabled={!formState.rating || formState.review.length < 50 || formState.review.length > 300}
+          disabled={!formState.rating || formState.comment.length < 50 || formState.comment.length > 300}
         >
           Submit
         </button>

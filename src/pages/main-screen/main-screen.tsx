@@ -3,38 +3,34 @@ import OffersList from './components/offers-list.tsx';
 import Header from '../../components/header/header.tsx';
 import Map from '../../components/map/map.tsx';
 import { useState } from 'react';
-import { CITY_NAMES } from '../../const.ts';
+import {CityName} from '../../const.ts';
+import CitiesList from './components/cities-list.tsx';
+import {useAppDispatch} from '../../hooks/use-app-dispatch.ts';
+import {useAppSelector} from '../../hooks/use-app-selector.ts';
+import {setCityName} from '../../store/action.ts';
 
-type MainScreenProps = {
-  offers: Offer[];
-};
 
-function MainScreen({ offers }: MainScreenProps): JSX.Element {
-  const [currentCityName, setCurrentCityName] = useState('Paris');
+function MainScreen(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const offers = useAppSelector((state) => state.offers);
+  const currentCityName = useAppSelector((state) => state.cityName);
+
   const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
   const cityOffers = offers.filter((offer) => offer.city.name === currentCityName);
+
+  const handleCityNameChange = (city: CityName) => {
+    dispatch(setCityName(city));
+  };
 
   return (
     <div className="page page--gray page--main">
       <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              {CITY_NAMES.map((city) => (
-                <li className="locations__item" key={city}>
-                  <div
-                    className={`locations__item-link tabs__item ${city === currentCityName ? 'tabs__item--active' : ''}`}
-                    onClick={() => setCurrentCityName(city)}
-                  >
-                    <span>{city}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+        <CitiesList
+          current={currentCityName}
+          onCityNameChange={handleCityNameChange}
+        />
         <div className="cities">
           <div className="cities__places-container container">
             {cityOffers.length > 0 ? (

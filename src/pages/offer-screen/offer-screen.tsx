@@ -1,18 +1,13 @@
-﻿import ReviewData from '../../models/review-data.ts';
-import Header from '../../components/header/header.tsx';
+﻿import Header from '../../components/header/header.tsx';
 import ReviewList from './components/review-list.tsx';
-import ReviewForm from './components/review-form.tsx';
 import Map from '../../components/map/map.tsx';
-import Offer from '../../models/offer.ts';
 import NearbyOffersList from './components/nearby-offers-list.tsx';
-import {useParams} from 'react-router-dom'; // Импортируем новый компонент
+import {useParams} from 'react-router-dom';
+import {useAppSelector} from '../../hooks/use-app-selector.ts';
 
-type OfferScreenProps = {
-  reviews: ReviewData[];
-  nearbyOffers: Offer[];
-};
+function OfferScreen(): JSX.Element {
+  const nearbyOffers = useAppSelector((state) => state.offers);
 
-function OfferScreen({ reviews, nearbyOffers }: OfferScreenProps): JSX.Element {
   const params = useParams();
   const currentOffer = nearbyOffers.find((offer) => offer.id === params.id) || nearbyOffers[0];
 
@@ -123,8 +118,7 @@ function OfferScreen({ reviews, nearbyOffers }: OfferScreenProps): JSX.Element {
                 </div>
               </div>
 
-              <ReviewList reviews={reviews} />
-              <ReviewForm />
+              <ReviewList />
             </div>
           </div>
 

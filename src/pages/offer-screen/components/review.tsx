@@ -1,4 +1,4 @@
-﻿import ReviewData from '../../../models/review-data.ts';
+﻿import {ReviewData} from '../../../models/review-data.ts';
 
 type ReviewProps = {
   review: ReviewData;
@@ -6,7 +6,6 @@ type ReviewProps = {
 
 function Review({ review }: ReviewProps): JSX.Element {
   const { user, comment, rating, date } = review;
-  const dateParsed = new Date(date);
 
   return (
     <li className="reviews__item">
@@ -30,8 +29,8 @@ function Review({ review }: ReviewProps): JSX.Element {
           </div>
         </div>
         <p className="reviews__text">{comment}</p>
-        <time className="reviews__time" dateTime={date}>
-          {dateParsed.getMonth()} {dateParsed.getFullYear()}
+        <time className="reviews__time" dateTime={date.toString()}>
+          {date.toLocaleString('en', { month: 'long', year: 'numeric' })}
         </time>
       </div>
     </li>

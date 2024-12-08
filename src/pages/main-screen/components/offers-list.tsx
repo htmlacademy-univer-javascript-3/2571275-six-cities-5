@@ -1,7 +1,7 @@
 ﻿import OfferCard from '../../../components/offer-card/offer-card.tsx';
 import Offer from '../../../models/offer.ts';
 import { Link } from 'react-router-dom';
-import {AppRoutes} from '../../../components/app/AppRoutes.ts';
+import {AppRoute} from '../../../const.ts';
 
 type OffersListProps = {
   offers: Offer[];
@@ -12,7 +12,7 @@ function OffersList({ offers, onOfferHover }: OffersListProps): JSX.Element {
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
-        <Link to={AppRoutes.Offer.replace(':id', offer.id)} key={offer.id} className="places__list-item">
+        <Link to={AppRoute.Offer.replace(':id', offer.id)} key={offer.id} className="places__list-item">
           <OfferCard
             offer={offer}
             onMouseOver={() => onOfferHover(offer)}
