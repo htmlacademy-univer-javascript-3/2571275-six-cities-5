@@ -2,8 +2,11 @@
 import Header from '../../components/header/header.tsx';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const.ts';
+import {useAppSelector} from '../../hooks/use-app-selector.ts';
 
 function FavoritesScreen(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers)
+    .filter((offer) => offer.isFavorite);
 
   return (
     <div className="page">

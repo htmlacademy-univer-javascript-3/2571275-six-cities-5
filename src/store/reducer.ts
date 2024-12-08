@@ -1,5 +1,5 @@
 ﻿import {createReducer} from '@reduxjs/toolkit';
-import {setCityName, setOffers, addReview} from './action.ts';
+import {setCityName, setOffers} from './action.ts';
 import {CityName} from '../const.ts';
 import offersMock from '../mocks/offers-mock.ts';
 

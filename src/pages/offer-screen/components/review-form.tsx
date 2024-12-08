@@ -17,7 +17,7 @@ function ReviewForm({ onSubmit } : OfferScreenProps): JSX.Element {
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const { name, value } = event.target;
-console.log(name, value);
+
     setFormState((prev) => ({
       ...prev,
       [name]: value,
