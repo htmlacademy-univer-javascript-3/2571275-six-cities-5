@@ -1,17 +1,17 @@
-﻿import Offer from '../models/offer.ts';
-import {createReducer} from '@reduxjs/toolkit';
-import {setCity, setOffers} from './action.ts';
+﻿import {createReducer} from '@reduxjs/toolkit';
+import {setCityName, setOffers, addReview} from './action.ts';
 import {CityName} from '../const.ts';
+import offersMock from '../mocks/offers-mock.ts';
 
 const initialState = {
-  city: CityName.Paris,
-  offers: [] as Offer[]
+  cityName: CityName.Paris,
+  offers: offersMock
 };
 
 export const reducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(setCity, (state, action) => {
-      state.city = action.payload;
+    .addCase(setCityName, (state, action) => {
+      state.cityName = action.payload;
     })
     .addCase(setOffers, (state, action) => {
       state.offers = action.payload;

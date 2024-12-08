@@ -1,10 +1,10 @@
-﻿import Offer from '../../models/offer.ts';
-import FavoritesList from './components/favorites-list.tsx';
+﻿import FavoritesList from './components/favorites-list.tsx';
 import Header from '../../components/header/header.tsx';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const.ts';
 
 function FavoritesScreen(): JSX.Element {
+
   return (
     <div className="page">
       <Header />

@@ -1,11 +1,19 @@
-﻿import ReviewData from '../../../models/review-data.ts';
-import Review from './review.tsx';
+﻿import Review from './review.tsx';
+import ReviewForm from './review-form.tsx';
+import {useState} from 'react';
+import {ReviewData} from '../../../models/review-data.ts';
+import reviewsMock from '../../../mocks/reviews-mock.ts';
 
-type ReviewListProps = {
-  reviews: ReviewData[];
-};
 
-function ReviewList({ reviews }: ReviewListProps): JSX.Element {
+function ReviewList(): JSX.Element {
+  const [reviews, setReviews] = useState<ReviewData[]>(reviewsMock);
+
+  const handleFormSubmit = (newReview: ReviewData) => {
+    setReviews((prev) => (
+      [...prev, newReview]
+    ));
+  };
+
   return (
     <section className="offer__reviews reviews">
       <h2 className="reviews__title">
@@ -16,6 +24,8 @@ function ReviewList({ reviews }: ReviewListProps): JSX.Element {
           <Review review={review} key={review.id} />
         ))}
       </ul>
+
+      <ReviewForm onSubmit={handleFormSubmit} />
     </section>
   );
 }
