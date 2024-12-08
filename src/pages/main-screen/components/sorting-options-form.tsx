@@ -1,19 +1,19 @@
 ﻿import {useState} from 'react';
-import {SortingOptions} from '../../../const.ts';
+import {SortingOption} from '../../../const.ts';
 
 type SortingOptionsFormProps = {
-  onOptionChange: (option: SortingOptions) => void;
+  onOptionChange: (option: SortingOption) => void;
 }
 
 function SortingOptionsForm({ onOptionChange } : SortingOptionsFormProps) : JSX.Element {
-  const [sortingOption, setSortingOption] = useState<SortingOptions>(SortingOptions.Popular);
+  const [sortingOption, setSortingOption] = useState<SortingOption>(SortingOption.Popular);
   const [isOpened, setOpened] = useState(false);
 
   const setNegativeOpen = () => {
     setOpened((prev) => !prev);
   };
 
-  const handleOptionChange = (option : SortingOptions) => {
+  const handleOptionChange = (option : SortingOption) => {
     if (option === sortingOption) {
       return;
     }
@@ -36,7 +36,7 @@ function SortingOptionsForm({ onOptionChange } : SortingOptionsFormProps) : JSX.
         isOpened &&
         <ul className="places__options places__options--custom places__options--opened">
           {
-            Object.entries(SortingOptions).map(([key, value]) => (
+            Object.entries(SortingOption).map(([key, value]) => (
               <li
                 key={key}
                 className={`places__option ${value === sortingOption && 'places__option--active'}`}

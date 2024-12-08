@@ -1,18 +1,18 @@
-﻿import {SortingOptions} from '../../const.ts';
+﻿import {SortingOption} from '../../const.ts';
 import Offer from '../../models/offer.ts';
 
-export function sortOffers(option: SortingOptions, offers: Offer[]) {
-  if (option === SortingOptions.Popular) {
+export function sortOffers(option: SortingOption, offers: Offer[]) {
+  if (option === SortingOption.Popular) {
     return offers;
   }
 
   return [...offers].sort((first, second) => {
     switch (option) {
-      case SortingOptions.LowToHigh:
+      case SortingOption.LowToHigh:
         return first.price - second.price;
-      case SortingOptions.HighToLow:
+      case SortingOption.HighToLow:
         return second.price - first.price;
-      case SortingOptions.TopRated:
+      case SortingOption.TopRated:
         return second.rating - first.rating;
       default:
         return 0;
