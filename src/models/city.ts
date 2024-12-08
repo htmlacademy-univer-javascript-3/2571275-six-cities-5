@@ -1,7 +1,8 @@
 ﻿import Location from './location.ts';
+import {CityName} from '../const.ts';
 
 type City = {
-    name: string;
+    name: CityName;
     location: Location;
 };
 

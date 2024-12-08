@@ -4,11 +4,7 @@ import Header from '../../components/header/header.tsx';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const.ts';
 
-type FavoritesScreenProps = {
-  offers: Offer[];
-};
-
-function FavoritesScreen({ offers }: FavoritesScreenProps): JSX.Element {
+function FavoritesScreen(): JSX.Element {
   return (
     <div className="page">
       <Header />

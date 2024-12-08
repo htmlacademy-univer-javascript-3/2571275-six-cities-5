@@ -1,5 +1,6 @@
 ﻿import Offer from '../models/offer.ts';
 import AccommodationType from '../models/accommodation-type.ts';
+import {CityName} from '../const.ts';
 
 const offersMock : Offer[] = [
   {
@@ -8,7 +9,7 @@ const offersMock : Offer[] = [
     type: AccommodationType.Apartment,
     price: 120,
     city: {
-      name: 'Hamburg',
+      name: CityName.Hamburg,
       location: {
         latitude: 53.548500,
         longitude: 9.987558,
@@ -32,7 +33,7 @@ const offersMock : Offer[] = [
     type: AccommodationType.Room,
     price: 70,
     city: {
-      name: 'Amsterdam',
+      name: CityName.Amsterdam,
       location: {
         latitude: 52.35514938496378,
         longitude: 4.873877537499948,
@@ -56,7 +57,7 @@ const offersMock : Offer[] = [
     type: AccommodationType.Apartment,
     price: 100,
     city: {
-      name: 'Amsterdam',
+      name: CityName.Amsterdam,
       location: {
         latitude: 52.35514938496378,
         longitude: 4.873877537499948,
@@ -80,7 +81,7 @@ const offersMock : Offer[] = [
     type: AccommodationType.House,
     price: 200,
     city: {
-      name: 'Amsterdam',
+      name: CityName.Amsterdam,
       location: {
         latitude: 52.35514938496378,
         longitude: 4.873877537499948,
@@ -104,7 +105,7 @@ const offersMock : Offer[] = [
     type: AccommodationType.Room,
     price: 100,
     city: {
-      name: 'Amsterdam',
+      name: CityName.Amsterdam,
       location: {
         latitude: 52.35514938496378,
         longitude: 4.873877537499948,

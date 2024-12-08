@@ -3,14 +3,11 @@ import OffersList from './components/offers-list.tsx';
 import Header from '../../components/header/header.tsx';
 import Map from '../../components/map/map.tsx';
 import { useState } from 'react';
-import { CITY_NAMES } from '../../const.ts';
+import {CityName} from '../../const.ts';
 
-type MainScreenProps = {
-  offers: Offer[];
-};
 
-function MainScreen({ offers }: MainScreenProps): JSX.Element {
-  const [currentCityName, setCurrentCityName] = useState('Paris');
+function MainScreen(): JSX.Element {
+  const [currentCityName, setCurrentCityName] = useState(CityName.Paris);
   const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
   const cityOffers = offers.filter((offer) => offer.city.name === currentCityName);
 
@@ -22,7 +19,7 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              {CITY_NAMES.map((city) => (
+              {Object.values(CityName).map((city) => (
                 <li className="locations__item" key={city}>
                   <div
                     className={`locations__item-link tabs__item ${city === currentCityName ? 'tabs__item--active' : ''}`}

@@ -7,12 +7,7 @@ import Offer from '../../models/offer.ts';
 import NearbyOffersList from './components/nearby-offers-list.tsx';
 import {useParams} from 'react-router-dom';
 
-type OfferScreenProps = {
-  reviews: ReviewData[];
-  nearbyOffers: Offer[];
-};
-
-function OfferScreen({ reviews, nearbyOffers }: OfferScreenProps): JSX.Element {
+function OfferScreen(): JSX.Element {
   const params = useParams();
   const currentOffer = nearbyOffers.find((offer) => offer.id === params.id) || nearbyOffers[0];
 
