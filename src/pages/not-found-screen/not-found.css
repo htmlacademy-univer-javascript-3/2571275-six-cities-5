@@ -19,5 +19,5 @@
 }
 
 .not-found--nav:hover {
-  text-shadow: 0.5px 0 0, -0.5px 0 0;
+  text-shadow: 1px 0 0, -1px 0 0;
 }
