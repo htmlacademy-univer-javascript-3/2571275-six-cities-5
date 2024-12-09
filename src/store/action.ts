@@ -8,3 +8,4 @@ export const setOffers = createAction<Offer[]>('offers/set');
 
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 
+export const setOffersDataLoadingStatus = createAction<boolean>('offers/setDataLoadingStatus');

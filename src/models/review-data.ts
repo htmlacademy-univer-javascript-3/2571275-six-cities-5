@@ -1,14 +1,12 @@
-﻿export type ReviewData = {
+﻿import {ExternalUserData} from './user-data.ts';
+
+export type ReviewData = {
   id: string;
   date: Date;
-  user: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
+  user: ExternalUserData;
   comment: string;
   rating: number;
 }
 
-export type NewReviewData = Pick<ReviewData, 'comment' | 'rating'>
+export type NewReviewData = Pick<ReviewData, 'comment' | 'rating'>;
 
