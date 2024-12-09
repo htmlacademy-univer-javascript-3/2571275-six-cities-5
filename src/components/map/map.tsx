@@ -3,7 +3,7 @@ import {Icon, Marker, layerGroup} from 'leaflet';
 import useMap from '../../hooks/use-map';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 import Location from '../../models/location.ts';
-import Offer from '../../models/offer.ts';
+import Offer from '../../models/api/offer.ts';
 
 type MapProps = {
   mainLocation: Location;

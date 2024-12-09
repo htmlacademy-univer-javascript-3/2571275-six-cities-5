@@ -1,7 +1,7 @@
 ﻿import Review from './review.tsx';
 import ReviewForm from './review-form.tsx';
 import {useState} from 'react';
-import {ReviewData} from '../../../models/review-data.ts';
+import {ReviewData} from '../../../models/api/review-data.ts';
 import reviewsMock from '../../../mocks/reviews-mock.ts';
 
 

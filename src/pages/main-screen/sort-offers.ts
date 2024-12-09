@@ -1,5 +1,5 @@
 ﻿import {SortingOption} from '../../const.ts';
-import Offer from '../../models/offer.ts';
+import Offer from '../../models/api/offer.ts';
 
 export function sortOffers(option: SortingOption, offers: Offer[]) {
   if (option === SortingOption.Popular) {

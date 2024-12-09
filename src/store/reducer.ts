@@ -1,13 +1,24 @@
 ﻿import {createReducer} from '@reduxjs/toolkit';
-import {requireAuthorization, setCityName, setOffers, setOffersDataLoadingStatus} from './action.ts';
+import {
+  changeOffer,
+  requireAuthorization,
+  setCityName,
+  setFavorites,
+  setOffers,
+  setOffersDataLoadingStatus,
+  setUserData
+} from './action.ts';
 import {AuthorizationStatus, CityName} from '../const.ts';
-import Offer from '../models/offer.ts';
+import Offer from '../models/api/offer.ts';
+import {UserData} from '../models/api/user-data.ts';
 
 const initialState = {
   cityName: CityName.Paris,
   offers: [] as Offer[],
   authorizationStatus: AuthorizationStatus.Unknown,
-  isOffersDataLoadingStatus: false
+  isOffersDataLoadingStatus: false,
+  userData: null as UserData | null,
+  favorites: [] as Offer[]
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -23,5 +34,17 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setOffersDataLoadingStatus, (state, action) => {
       state.isOffersDataLoadingStatus = action.payload;
+    })
+    .addCase(setUserData, (state, action) => {
+      state.userData = action.payload;
+    })
+    .addCase(setFavorites, (state, action) => {
+      state.favorites = action.payload;
+    })
+    .addCase(changeOffer, (state, action) => {
+      state.offers = state.offers
+        .map((item) =>
+          item.id === action.payload.id ? action.payload : item
+        );
     });
 });

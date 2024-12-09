@@ -1,4 +1,4 @@
-﻿import {ReviewData} from '../../../models/review-data.ts';
+﻿import {ReviewData} from '../../../models/api/review-data.ts';
 
 type ReviewProps = {
   review: ReviewData;
