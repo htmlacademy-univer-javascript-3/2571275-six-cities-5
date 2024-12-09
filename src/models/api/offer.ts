@@ -1,6 +1,6 @@
-﻿import AccommodationType from './accommodation-type.ts';
-import Location from './location.ts';
-import City from './city.ts';
+﻿import AccommodationType from '../accommodation-type.ts';
+import Location from '../location.ts';
+import City from '../city.ts';
 
 type Offer = {
   id : string;

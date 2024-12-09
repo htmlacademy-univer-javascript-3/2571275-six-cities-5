@@ -1,4 +1,4 @@
-﻿import Offer from '../../../models/offer.ts';
+﻿import Offer from '../../../models/api/offer.ts';
 import OfferCard from '../../../components/offer-card/offer-card.tsx';
 
 type NearbyOffersListProps = {

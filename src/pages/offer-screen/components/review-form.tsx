@@ -1,6 +1,6 @@
 ﻿import React, {ChangeEvent, useState} from 'react';
 import {ratingsData} from '../rating-data.ts';
-import {NewReviewData, ReviewData} from '../../../models/review-data.ts';
+import {NewReviewData, ReviewData} from '../../../models/api/review-data.ts';
 import reviewsMock from '../../../mocks/reviews-mock.ts';
 
 type OfferScreenProps = {

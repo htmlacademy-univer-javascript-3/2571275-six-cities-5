@@ -1,4 +1,4 @@
-﻿import Offer from '../../../models/offer.ts';
+﻿import Offer from '../../../models/api/offer.ts';
 import FavoritesCard from './favorites-card.tsx';
 import { Link } from 'react-router-dom';
 import {AppRoute} from '../../../const.ts';

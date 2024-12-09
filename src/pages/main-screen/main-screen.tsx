@@ -1,4 +1,4 @@
-﻿import Offer from '../../models/offer.ts';
+﻿import Offer from '../../models/api/offer.ts';
 import OffersList from './components/offers-list.tsx';
 import Header from '../../components/header/header.tsx';
 import Map from '../../components/map/map.tsx';
